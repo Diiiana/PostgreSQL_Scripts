@@ -1,6 +1,11 @@
+
 DROP FUNCTION song_similarities(integer);
 CREATE OR REPLACE FUNCTION song_similarities(song_id INTEGER) RETURNS TABLE (
-	id INTEGER
+	id INTEGER,
+	artist VARCHAR(200),
+	tag TEXT,
+	spotify_uri TEXT,
+	image BYTEA
 ) AS $$
 	DECLARE for_song content_based_powers_and_tf;
 	DECLARE record content_based_powers_and_tf;
@@ -36,7 +41,9 @@ CREATE OR REPLACE FUNCTION song_similarities(song_id INTEGER) RETURNS TABLE (
 		sim_float FLOAT,
 		id INTEGER,
 		artist VARCHAR(200),
-		tag TEXT
+		tag TEXT,
+		spotify_uri TEXT,
+		image BYTEA
 	);
 	
 	DROP TABLE IF EXISTS recommendations_tf_idf;
@@ -62,7 +69,7 @@ CREATE OR REPLACE FUNCTION song_similarities(song_id INTEGER) RETURNS TABLE (
 		SELECT Numarator / (sqrt(A_numitor) * sqrt(B_Numitor)) INTO R;
 		
 		INSERT INTO recommendations
-		VALUES(R, record.id, record.artist_name, record.tag);
+		VALUES(R, record.id, record.artist_name, record.tag, record.spotify_uri, record.image);
 
 		counter = counter + 1;
 	end loop; 
@@ -74,7 +81,7 @@ CREATE OR REPLACE FUNCTION song_similarities(song_id INTEGER) RETURNS TABLE (
 	FROM TF_IDF_VIEW t;
 	
 	RETURN QUERY
-	SELECT r.id
+	SELECT r.id, r.artist, r.tag, r.spotify_uri, r.image
 	FROM recommendations r INNER JOIN recommendations_tf_idf t ON r.id = t.id
 	ORDER BY t.rank_v DESC, r.sim_float DESC
 	LIMIT 20;
