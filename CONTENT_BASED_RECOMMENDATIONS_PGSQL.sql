@@ -90,8 +90,4 @@ CREATE OR REPLACE FUNCTION song_similarities(song_id INTEGER) RETURNS TABLE (
 $$
 LANGUAGE plpgsql;
 
-
 SELECT * FROM song_similarities(49725) 
-
-
-
