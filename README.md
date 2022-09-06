@@ -3,7 +3,7 @@
 Scripts used for comparing two songs at lowest level, database level.
 
 CONTENT_BASED_RECOMMENDATIONS_PGSQL <br/>
-&nbsp;&nbsp;&nbsp; > _stored procedure that compares two songs based on their attributes_
+&nbsp;&nbsp;&nbsp; > _function that compares two songs based on their attributes_
 
 GET_ARTIST_FOR_GENRES <br/>
 &nbsp;&nbsp;&nbsp; > _function that retrieves artists based on the selected genres_
