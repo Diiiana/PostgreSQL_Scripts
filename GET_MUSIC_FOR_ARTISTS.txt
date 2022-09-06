@@ -1,4 +1,3 @@
--- DROP FUNCTION get_music_for_artists(VARIADIC TEXT[]); 
 CREATE OR REPLACE FUNCTION get_music_for_artists(given_artists_ids INTEGER[]) 
 RETURNS TABLE(
 	artist_id INTEGER,
