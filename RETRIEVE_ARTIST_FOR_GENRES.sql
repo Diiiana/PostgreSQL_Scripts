@@ -1,4 +1,5 @@
 DROP FUNCTION get_artist_for_genres(integer[]);
+
 CREATE OR REPLACE FUNCTION get_artist_for_genres(given_tag_ids INTEGER[]) 
 RETURNS TABLE(
 	id_result INTEGER,
