@@ -20,5 +20,5 @@ TF_IDF_POSTGRESQL <br/>
 <br/>
 
 _Mentioned scripts were used for the implementation of the music recommender system:_
-https://github.com/Diiiana/MusicRecommenderSystem_backend
+https://github.com/Diiiana/Music-Recommender-System-Backend
 
